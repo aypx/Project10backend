@@ -44,6 +44,7 @@ app.post("/projects", async (req, res) => {
 
         projectArray.push(projectInput);
         await fs.writeFile("./projects.json", JSON.stringify(projectArray, null, 2));
+        res.status(200).json(projectArray);
     } catch (e) {
         res.status(500).json({error: "error"});
     }
