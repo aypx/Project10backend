@@ -11,7 +11,11 @@ const port = 3001;
 app.use(express.json({limit: "10mb"}));
 
 app.use(cors({
-    origin: ["http://localhost:5500", "http://127.0.0.1:5500"]
+    origin: [
+        "http://127.0.0.1:5500",
+        "http://localhost:5500",
+        "https://aypx.github.io"
+    ]
 }));
 
 
@@ -83,8 +87,6 @@ app.post("/login", async (req, res) => {
         }
   
         res.status(201).json({token: token});
-
-        localStorage.setItem("authToken", token)
     } catch (e) {
         res.status(500).json({
             error: e.message
